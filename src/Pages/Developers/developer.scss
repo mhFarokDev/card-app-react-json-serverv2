@@ -1,0 +1,50 @@
+.developer-page{
+    text-align: center;
+    .tablewrap{
+        width: 80%;
+            margin: auto;
+            background: #000;
+            min-height: 450px;
+            margin-bottom: -17px;
+        .table{
+            thead{}
+            tbody{
+                tr{
+                    
+                    td{
+                        img{
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 50%;
+                        }
+                        button{
+                            padding: 0px 15px;
+                            font-size: 20px;
+                            color: #fff;
+                            border: none;
+                            margin: 5px;
+                            border-radius: 10px;
+                        }
+                    }
+                }
+    
+            }
+            
+        }
+    }
+    
+    .pagenation{
+        width: 80%;
+        background-color: rgb(0, 0, 0);
+        margin: auto;
+        padding: 8px ;
+        .items{
+            button{
+                background-color: rgb(253 104 0);
+                border: none;
+                margin: 0px 3px;
+                color: #fff;
+            }
+        }
+    }
+}

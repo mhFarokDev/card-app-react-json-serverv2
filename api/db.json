@@ -1,0 +1,113 @@
+{
+  "developers": [
+    {
+      "id": "1",
+      "name": "MH Faruk22",
+      "age": 22,
+      "skill": "MERN",
+      "photo": "https://unitedthemes.com/wp-content/uploads/2018/09/team2.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Shamim22",
+      "age": 22,
+      "skill": "Laravel",
+      "photo": "https://unitedthemes.com/wp-content/uploads/2018/09/team1.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Alif",
+      "age": 22,
+      "skill": "PHP",
+      "photo": "https://www.alhaya-medical.com/wp-content/uploads/2017/11/team-member.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Korim",
+      "age": 22,
+      "skill": "HTML",
+      "photo": "https://valleygraphics.ca/wp-content/uploads/2015/01/team-member-04.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Rahman",
+      "age": 99,
+      "skill": "CSS",
+      "photo": "https://www.vitrine.ro/wp-content/uploads/2017/01/team-member-2-550x550.jpg"
+    },
+    {
+      "id": "56ef",
+      "name": "Yu-Yu Lin",
+      "age": "457",
+      "skill": "PHP",
+      "photo": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSJGY0rA4lT6FLyj6pMkFtQfOPA_ep58968wdQpVel_dSLRwlBV"
+    },
+    {
+      "id": "6429",
+      "name": "E-mailAdders",
+      "age": "2",
+      "skill": "Laravel",
+      "photo": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSJGY0rA4lT6FLyj6pMkFtQfOPA_ep58968wdQpVel_dSLRwlBV"
+    },
+    {
+      "id": "5431",
+      "name": "Yu-Yu",
+      "age": "8",
+      "skill": "Laravel",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiPICw0MvHj_wo8CMy5anGtsvBzqAJSQtDFw&usqp=CAU"
+    },
+    {
+      "id": "4e90",
+      "name": "MH Farok",
+      "age": "24",
+      "skill": "MERN",
+      "photo": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSJGY0rA4lT6FLyj6pMkFtQfOPA_ep58968wdQpVel_dSLRwlBV"
+    },
+    {
+      "id": "ce3a",
+      "name": "MH Farok",
+      "age": "45",
+      "skill": "PHP",
+      "photo": "https://powerpackelements.com/wp-content/uploads/2017/11/Team-memeber-11.png"
+    },
+    {
+      "id": "16b8",
+      "name": "MH Faruk",
+      "age": "24",
+      "skill": "MERN",
+      "photo": "https://powerpackelements.com/wp-content/uploads/2017/11/Team-memeber-11.png"
+    }
+  ],
+  "customars": [
+    {
+      "id": 1,
+      "name": "Faruk",
+      "age": 22,
+      "location": "Kishoreganj"
+    },
+    {
+      "id": 2,
+      "name": "Korim",
+      "age": 32,
+      "location": "Mirpur"
+    },
+    {
+      "id": 3,
+      "name": "Alif",
+      "age": 99,
+      "location": "Foridpur"
+    },
+    {
+      "id": 4,
+      "name": "molom",
+      "age": 43,
+      "location": "bangladesh"
+    },
+    {
+      "id": "0616",
+      "name": "alif",
+      "age": 43,
+      "location": "korompotti"
+    }
+  ]
+}
