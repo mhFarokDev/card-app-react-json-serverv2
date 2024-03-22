@@ -48,7 +48,7 @@ const AddDev = () => {
                     icon: 'success',
                     confirmButtonText: 'OK'
                   })
-                  navigate("/")
+                  navigate("/developers")
             })
             
         }
@@ -57,7 +57,7 @@ const AddDev = () => {
 
     return (
     <>
-       <div className="developer-page">
+       <div className="developer-page mb-5">
             <Container>
                 <div className="text-center h1 py-4">Add New Developer</div>
                 <Link className='btn btn-primary mb-3' to="/">Back Home</Link>

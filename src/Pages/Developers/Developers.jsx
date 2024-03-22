@@ -7,6 +7,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import VIewPopup from '../../components/Popup/VIewPopup';
+import { IoSearchOutline } from "react-icons/io5";
 
 const Developers = () => {
 
@@ -24,8 +25,11 @@ const Developers = () => {
         pageNat : []
     })
 
-
-    
+    // search key
+    const [searchWord, setSearchWord] = useState("")
+    const [serData, setSerData] = useState("")
+    const [serEmpty, setSerEmpty] = useState(false)
+    const [clsBTN, setClsBTN] = useState(false)
 
 
 
@@ -36,6 +40,7 @@ const Developers = () => {
             setDevData(res.data)
         })
 
+        
         // pagenation Items and all dev counter
         axios.get('http://localhost:5050/developers')
         .then(res =>{
@@ -47,32 +52,43 @@ const Developers = () => {
             })
         })
     }, [])
-
-
     
 
     // delete developers
-    const HandleDevDelete = (id) =>{
+const HandleDevDelete = (id) =>{
 
         
-        Swal.fire({
-            title: "Are you sure want to delete?",
-            showCancelButton: true,
-            confirmButtonText: "Sure",
-          }).then((result) => {
-            
-            if (result.isConfirmed) {
-                axios.delete(`http://localhost:5050/developers/${id}`).then(res =>{
-                    setDevData(devData.filter(data => data.id !== id))
-                    Swal.fire("Done", "", "success");
-                }).catch(error => {
-                    Swal.fire("Deleted Warng!", "", "warning");
-
+    Swal.fire({
+        title: "Are you sure want to delete?",
+        showCancelButton: true,
+        confirmButtonText: "Sure",
+      }).then((result) => {
+        
+        if (result.isConfirmed) {
+            axios.delete(`http://localhost:5050/developers/${id}`).then(res =>{
+                // setDevData(devData.filter(data => data.id !== id))
+                // pagenation Items and all dev counter
+                axios.get('http://localhost:5050/developers')
+                .then(res =>{
+                    const length = res.data.length
+                    const Paginlength = Array(Math.ceil(length/5)).fill(0)
+                    setPages({
+                        allDevsNum : length,
+                        pageNat : Paginlength
+                    })
                 })
-            }
-          });
-    }
+                axios.get(`http://localhost:5050/developers?_page=${pages.pageNat.length}&_limit=5`).then(res =>{
+                    setDevData(res.data)
+                })
+                Swal.fire("Done", "", "success");
+            }).catch(error => {
+                Swal.fire("Deleted Warng!", "", "warning");
 
+            })
+        }
+      });
+}
+ 
     // view single Data
     const HandleViewDev = async (id) =>{
          setSingleViewData(devData.find(data => data.id === id))
@@ -87,6 +103,32 @@ const Developers = () => {
             setDevData(res.data.data);
         })
     }
+
+
+    // search handler
+    const HandleSearch = () => {
+       
+            axios.get(`http://localhost:5050/developers?name=${searchWord}`).then(res =>{
+                setSerData(res.data);
+                setClsBTN(true)
+                
+                if (!res.data[0]) {
+                    setSerEmpty(true)
+                }
+        })
+        
+        
+    }
+
+    // search close
+    const HandleSearchClose = () =>{
+        setSearchWord("")
+        setSerData("")
+        setSerEmpty(false)
+        setClsBTN(false)
+    }
+
+    
   return (
     <>
 
@@ -95,7 +137,39 @@ const Developers = () => {
         <div className="developer-page">
             <Container>
                 <div className="text-center h1 py-4">Our Developer</div>
-                <Link className='btn btn-primary mb-3' to="/add">Create New Developer</Link>
+                <div className="header-sec-our-dev">
+                    <Link className='btn btn-primary mb-3' to="/add">Create New Developer</Link>
+                    <div className="search-box">
+                        <input type="text" placeholder='Name Search...' value={searchWord} onChange={(e)=>setSearchWord(e.target.value)}/>
+                        <button onClick={HandleSearch}><IoSearchOutline /></button>
+
+                        <div className="show-ser-res">
+                            <table className='table'>
+                            <tbody>
+                                {
+                                        clsBTN && <div onClick={HandleSearchClose} className='close'>Close</div>
+                                }
+                                { serEmpty && <div className='close'>Data Not Found!</div> }
+                                
+                                
+                                {
+                                    serData && serData.map((data, index) =>
+                                    <tr key={index}>
+                                    <td><img src={data.photo} alt="" /></td>
+                                    <td>{data.name}</td>
+                                    <td><button className='bg-primary' onClick={()=>HandleViewDev(data.id)}><LuEye /></button></td>
+                                    
+                                </tr>
+                                
+                                    )
+                                    
+                                }
+                                
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
                 <div className="tablewrap">
                 <table className='table table-striped table-dark'>
@@ -112,7 +186,7 @@ const Developers = () => {
                         {
                            devData.map((data, index) => 
                            <tr key={index} className=''>
-                           <td>{index+1}</td>
+                           <td>{data.id}</td>
                            <td>{data.name}</td>
                            <td>{data.age}</td>
                            <td>{data.skill}</td>
@@ -132,12 +206,9 @@ const Developers = () => {
                 <div className="pagenation">
                     <div className="items">
                         
+                        <h4 className='text-white'>Number Of Developers : {pages.allDevsNum}</h4>
                         
                         {
-                            
-                            // pages.pageNat.forEach(element => {
-                            //     <h1>fi</h1>
-                            // })
                             pages.pageNat.map((item, index) => (
                                 <button key={index} onClick={(()=>Handlepagenation(index+1))}>{index+1}</button>
                               ))

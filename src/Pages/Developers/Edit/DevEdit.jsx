@@ -55,7 +55,7 @@ const DevEdit = () => {
                     icon: 'success',
                     confirmButtonText: 'OK'
                   })
-                  navigate("/")
+                  navigate("/developers")
             }).catch(err =>{
                 console.log(err);
             })
